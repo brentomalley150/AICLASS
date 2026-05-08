@@ -172,7 +172,8 @@ Three principles fall out of the personas above:
 **Competitive context:**
 - **Lotsa Helping Hands / CaringBridge:** Calendar-based meal trains. Built for short-term crises (cancer, surgery), not multi-year aging-in-place. No AI, no service hiring.
 - **Papa:** Pairs elders with paid companions. Solves loneliness for the elder, not coordination across the family.
-- **Carely / ianacare:** Caregiver coordination but caregiver-led, not crew-peer model. `[NEED: confirm/expand from your competitive notes]`
+- **Carely:** Family-coordination dashboard — shared calendar, messaging, visit logging, manual task assignment. Functionally a polished group-calendar-plus-chat layer for the family. No AI coordination (assignment, rebalancing, and summarization are all manual), and no integrated services hiring. Free iPhone app today.
+- **ianacare:** The closest structural competitor. Explicitly designed to rally a "care team" of friends, family, neighbors, and coworkers around a care recipient via a request-driven team calendar (meals, rides, check-ins, respite). MIT-backed, in market since 2018, already uses statistical matching to route help requests, with new AI features announced for launch in 2025. Two structural gaps vs. our approach: (1) the model is **request-driven** — the caregiver asks, the team responds — rather than continuous coordination of recurring needs, and (2) it does not integrate paid services hiring with elder context. **This is the competitor most likely to verticalize into our space first; monitor closely.**
 - **TaskRabbit / Thumbtack:** Solve home services hiring but with zero context about the loved one.
 
 **Why our approach wins:** Crew-peer model (no single "lead caregiver" required) + AI that does the actual coordination work + integrated services hiring with elder-context. No competitor combines all three.
