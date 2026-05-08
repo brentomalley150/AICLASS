@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}} — PRD</title>
+  <meta name="description" content="Product requirements doc for {{title}}." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%A8%E2%80%8D%F0%9F%91%A9%E2%80%8D%F0%9F%91%A7%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #fcfbf8;
+      --surface: #ffffff;
+      --text: #1f2328;
+      --muted: #5b6470;
+      --rule: #e6e3dd;
+      --accent: #2f5d9c;
+      --accent-soft: #eaf1fb;
+      --warn-bg: #fff7da;
+      --warn-text: #6b5400;
+      --warn-rule: #ead389;
+      --code-bg: #f4f1ea;
+      --tbl-stripe: #faf8f3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15171b;
+        --surface: #1c1f24;
+        --text: #e6e8eb;
+        --muted: #9aa3ae;
+        --rule: #2a2e35;
+        --accent: #88b1e6;
+        --accent-soft: #1a2738;
+        --warn-bg: #3a3014;
+        --warn-text: #f3d780;
+        --warn-rule: #6a5520;
+        --code-bg: #20242b;
+        --tbl-stripe: #1a1d22;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      max-width: 1180px;
+      margin: 0 auto;
+      gap: 48px;
+      padding: 32px 28px 80px;
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 16px; padding: 20px 18px 60px; }
+      aside.toc { position: static; max-height: none; border-right: 0; padding-right: 0; }
+    }
+    aside.toc {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      padding-right: 18px;
+      border-right: 1px solid var(--rule);
+      font-size: 14px;
+    }
+    aside.toc h2 {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    aside.toc ol, aside.toc ul { list-style: none; padding: 0; margin: 0; }
+    aside.toc li { margin: 6px 0; }
+    aside.toc a {
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      line-height: 1.35;
+    }
+    aside.toc a:hover { background: var(--accent-soft); color: var(--accent); }
+
+    main { min-width: 0; }
+    header.doc-header {
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    header.doc-header .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    header.doc-header h1 {
+      font-size: 38px;
+      line-height: 1.15;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    header.doc-header .meta {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    header.doc-header .meta span strong { color: var(--text); font-weight: 600; }
+
+    article h2 {
+      font-size: 24px;
+      margin: 44px 0 12px;
+      letter-spacing: -0.005em;
+      scroll-margin-top: 24px;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 28px 0 8px;
+      scroll-margin-top: 24px;
+    }
+    article h4 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 22px 0 6px;
+    }
+    article p { margin: 12px 0; }
+    article a { color: var(--accent); }
+    article ul, article ol { padding-left: 22px; }
+    article li { margin: 4px 0; }
+    article hr { border: 0; border-top: 1px solid var(--rule); margin: 36px 0; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: var(--code-bg);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: var(--code-bg);
+      padding: 16px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    pre code { background: transparent; padding: 0; }
+
+    .need {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid var(--warn-rule);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+    .need::before { content: "⚑ "; font-style: normal; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 18px 0;
+      font-size: 14.5px;
+      display: block;
+      overflow-x: auto;
+    }
+    table thead th {
+      text-align: left;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    table tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    table tbody tr:nth-child(even) td { background: var(--tbl-stripe); }
+    table tbody td:first-child { white-space: nowrap; color: var(--muted); width: 1%; }
+
+    .callout {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14.5px;
+    }
+    .callout strong { color: var(--accent); }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+
+    /* Checklist */
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li { padding-left: 26px; position: relative; }
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.45em;
+      width: 14px; height: 14px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--surface);
+    }
+    .checklist li.done::before {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .checklist li.done::after {
+      content: "";
+      position: absolute;
+      left: 4px; top: calc(0.45em + 2px);
+      width: 4px; height: 8px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="toc" aria-label="Table of contents">
+      <h2>On this page</h2>
+      {{toc}}
+    </aside>
+
+    <main>
+      <header class="doc-header">
+        <span class="eyebrow">Product Requirements Doc</span>
+        <h1>{{title}}</h1>
+        <div class="meta">
+          <span><strong>Author:</strong> {{author}}</span>
+          <span><strong>Date:</strong> {{date}}</span>
+          <span><strong>Status:</strong> {{status}}</span>
+        </div>
+      </header>
+
+      <article>
+        {{content}}
+      </article>
+
+      <div class="footer">
+        <span>{{title}} PRD · {{status}}</span>
+        <span><a href="BuildtheCrew-PRD.md">View raw markdown</a></span>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
