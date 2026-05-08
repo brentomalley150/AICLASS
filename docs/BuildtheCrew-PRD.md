@@ -22,9 +22,10 @@ If both leading indicators move and the 12-month outcome does not, the hypothesi
 **Who:** Adult children, siblings, friends, and neighbors of an older adult (typically 75+) who wants to age in place. The person who downloads the app is rarely a single "primary caregiver" — it's a *crew* of 3-12 people scattered across cities, with uneven availability and skills. None of them live with the loved one.
 
 **How bad it is:**
-- `[NEED: paste caregiver burnout stat — e.g., AARP "X% of family caregivers report high stress"]`
-- `[NEED: paste aging-in-place demand stat — e.g., AARP "X% of adults 50+ want to remain in current home"]`
-- `[NEED: paste market size — # of family caregivers in the US, projected growth]`
+
+- **Caregiver burden is widespread and severe.** 39% of US family caregivers report high emotional stress directly attributable to caregiving, and 45% report high physical strain. Nearly half experience at least one negative financial impact, and 1 in 5 say their health is fair or poor as a direct result of caregiving (AARP & National Alliance for Caregiving, *Caregiving in the US 2025*).
+- **Aging in place is what older adults overwhelmingly want.** 75% of adults 50+ say they want to live in their current home for as long as possible, and 73% want to remain in their current community — yet 44% expect they will have to relocate, with cost and unmet support being the leading drivers (AARP, *2024 Home and Community Preferences Survey*, n=3,000+).
+- **The market is large, growing fast, and aging into the problem.** 63 million Americans — roughly 1 in 4 adults — are now family caregivers, a 45% increase (~20 million more caregivers) over the past decade. The 85+ population is projected to triple by 2050, and adults 65+ will outnumber children under 18 by 2030 (AARP/NAC 2025; US Census projections). Today's caregiver is, on average, 51 years old; nearly a third are simultaneously caring for both children and an aging parent.
 
 **Customer evidence:**
 - `[NEED: paste 3-5 direct caregiver quotes from your user interviews — the rawer the better]`
