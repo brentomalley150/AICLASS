@@ -31,6 +31,129 @@ We believe that giving distributed family + friend "crews" an AI-powered coordin
 
 **If we don't solve it:** Loved ones get moved to assisted living earlier than they want to, families fracture under uneven labor distribution, and the lead coordinator burns out (a documented health risk in itself).
 
+## Personas
+
+Three crew archetypes drive product decisions. Names are illustrative; quotes are synthesized from PRD themes and standard caregiving research patterns, **not** drawn from real interviews. Replace with verbatim quotes once `[NEED: paste 3-5 direct caregiver quotes]` (Section 2) is filled in.
+
+### Persona 1 — Maya, the Lead Coordinator
+
+*"I'm not the lead caregiver. I'm just the only one who hasn't quit."*
+
+**Demographics.** Adult daughter, mid-40s. Lives in the same metro or 1–2 hours away. Married, two kids in middle/high school, full-time job. Eldest sibling.
+
+**Day in the life.** It's 9:47pm on a Tuesday and Maya is texting her brother in Denver about whether Mom remembered to take her evening medication. He responds *"idk, ask Dad?"* — and Maya doesn't have the energy to explain that Dad's been gone for two years. She updates the shared Google Sheet she made eight months ago, the one only she touches. Tomorrow she has to call the gutter guy because the cousin who said he'd handle it never followed up. She has been the family operating system for her mother since 2024 and has started waking up at 4am with a clenched jaw.
+
+**Jobs to be done.**
+
+- When I'm coordinating five people across three time zones, I want one place where everyone can see what's needed and when, so I stop being the human router for every request.
+- When I'm exhausted, I want the system to redistribute work without me having to ask, because asking is also work.
+- When something goes wrong, I want it logged automatically, so I'm not the only one carrying the memory.
+
+**Pains.**
+
+- Decision fatigue from being the default decider for every micro-task.
+- Resentment building toward siblings who "want to help but don't."
+- Guilt that she should still be doing more, despite already doing most of it.
+- Fear that something critical will fall through the cracks on a day she's depleted.
+- The cognitive load of remembering who knows what.
+
+**Gains / needs.**
+
+- Visibility into the full picture (what's done, what's pending, who's slipping).
+- The ability to step away for a weekend without things collapsing.
+- Evidence the load is being shared — to reduce resentment, not just balance work.
+- A diplomatic way to flag overload without seeming like she's complaining.
+
+**Trigger moments.** A missed medication on a Sunday night. A sibling asking *"is there anything I can do?"* for the third time. The realization that she hasn't slept through the night in two months.
+
+**Key product moment.** The first time the AI proposes a balanced weekly schedule and she sees her name on fewer than half the tasks for the first time in two years.
+
+**What we'd build for Maya.** Load-balance dashboards. A "take a week off" mode that pauses her assignments and surfaces work to others. The overload-detection alert (no one wants to *be* Maya, but the alert validates her experience).
+
+**What we'd cut for Maya.** Onboarding screens that demand the loved one's full medical profile up front (she'll abandon — already exhausted). Long setup before showing value. Group-celebration UI ("great job, team!") — feels patronizing when you're doing 80%.
+
+### Persona 2 — Daniel, the Distant Sibling
+
+*"I'm not the bad one. I'm just the far one. I think I am, anyway."*
+
+**Demographics.** Adult son, late 30s to early 40s. Lives 2+ hours away or in a different time zone. Two young kids, demanding career. Often the second or third person invited to the crew. Sends money or gift cards when he doesn't know what else to do.
+
+**Day in the life.** Daniel's group text with his sisters has 247 unread messages. He scrolls back through them on the train, gets to a message from yesterday about Mom's cardiology appointment, and realizes the appointment was *today*. He texts *"how did it go?"* and gets a thumbs-up from Maya 90 minutes later. He feels relief, then guilt about feeling relief. He sends Mom flowers. He has not spoken to his mother on the phone in eleven days, but he is paying for the lawn service. He thinks of himself as someone who wants to be more involved, and is privately not sure if that's true.
+
+**Jobs to be done.**
+
+- When I check in once a week, I want a 90-second summary of what actually happened and what's actually needed, so I'm caught up without scrolling 200 messages.
+- When I have time on a Saturday, I want a specific async task assigned to me that I can finish from my couch in Brooklyn, so I'm contributing real labor instead of just sending money.
+- When I show up for the holidays, I want to walk in already knowing what's changed, so I'm not the relative who has to be re-briefed.
+
+**Pains.**
+
+- Information overwhelm from the group chat — gives up trying to keep up.
+- Status anxiety about being judged by the lead coordinator (probably his sister).
+- Guilt about geographic distance he can't change in the short term.
+- Awkwardness about asking what's needed (feels like adding to Maya's plate).
+- Fear of the moment he realizes how much he missed.
+
+**Gains / needs.**
+
+- Personalized weekly summary that surfaces only what's relevant to him.
+- A clear, narrow task he can claim and execute remotely (calling insurance, renewing a prescription, ordering supplies, vendor research).
+- Visibility for the contributions he does make — so he doesn't feel invisible.
+- An easy on-ramp on a Sunday morning: low effort, high signal.
+
+**Trigger moments.** A Thanksgiving visit where he realized how much had changed without him knowing. His sister snapping at him in the group chat about something he didn't realize he should have done. His own kid asking why Grandma sounded confused on FaceTime.
+
+**Key product moment.** The "What you missed this week" summary that's actually 90 seconds — followed by one specific task with a green "Claim" button next to it.
+
+**What we'd build for Daniel.** Async-first task patterns (calls, paperwork, vendor management, research) that work remotely. Personalized digest, not the full activity feed. Recognition surface — small celebrations when he completes a remote task. A monthly calendar view for at-a-glance phone use.
+
+**What we'd cut for Daniel.** Notifications for in-person events he can't attend. Long onboarding flows. Anything that requires real-time reply during EST work hours.
+
+### Persona 3 — Patricia, the Specialist Friend
+
+*"I have so much to give and I keep waiting for someone to ask."*
+
+**Demographics.** Friend or extended family — the retired neighbor, the RN aunt, the handy cousin, the godparent. 50s–70s, often retired or partly retired. Has a specific high-value skill (medical knowledge, home repair, local presence, transportation). May or may not be in the original group text.
+
+**Day in the life.** Patricia has lived three doors down from Bea since 1998. They had coffee every Wednesday for eleven years until Bea stopped being able to walk over. Patricia is a retired nurse and notices things — the slight new tremor, the meds left out on the counter — but doesn't know what to do with what she notices. She's not family. She's not sure if anyone wants her opinion. When Bea fell last March, Patricia was the first one there and held her hand for 40 minutes waiting for the ambulance. After that she didn't hear anything for two weeks, until Bea's daughter Maya texted to thank her. She would do anything they asked. Nobody asks.
+
+**Jobs to be done.**
+
+- When I see something concerning, I want a clear way to flag it to the family without seeming intrusive.
+- When the family needs a skill I have, I want them to know to ask me, so I'm not waiting around hoping I'll be useful.
+- When I help, I want my contribution recognized as part of the team, not as a favor I'm doing.
+
+**Pains.**
+
+- Social anxiety about overstepping — *"is it my place?"*
+- Being treated as a stranger or afterthought, not part of the crew.
+- Being asked to do things outside her expertise (driving in winter when she's nervous on icy roads).
+- Watching things go wrong and not feeling she has standing to intervene.
+- The loneliness of caring about someone who isn't formally hers to care about.
+
+**Gains / needs.**
+
+- Defined narrow involvement that respects her skill.
+- A permission structure — a clear *"you're invited to help with X"* message.
+- Recognition as a member of the crew, not an outsider.
+- A way to flag concerns without intruding on a private family matter.
+
+**Trigger moments.** A specific incident she witnessed (a fall, a confused conversation, a missed med) that the family never heard about. Hearing through a third party that something the family is struggling with is something she could solve in 20 minutes. Being explicitly invited to the crew for the first time.
+
+**Key product moment.** Receiving a personalized invitation that says *"Bea's family invited you because you're closest and you used to be a nurse. Here's what they think you'd be best at."* And it's right.
+
+**What we'd build for Patricia.** Skill-tagged invitations matching her to qualified tasks. A lightweight "concern flag" UX — non-medical, just a heads-up. A guest-vs-member distinction that respects her position without second-classing her. Per-category opt-in/opt-out (*medical: yes; winter driving: no*).
+
+**What we'd cut for Patricia.** Mandatory profile fields about her relationship that make "other" feel like second-class. Generic group celebrations that don't acknowledge her unique contribution. Pressure to attend non-essential events.
+
+### Cross-persona design principles
+
+Three principles fall out of the personas above:
+
+1. **Default to async.** Maya is depleted, Daniel is remote, Patricia is tentative. None of them benefit from real-time pressure. Notifications, summaries, and task claims should work on weekly cadence by default; real-time only for genuine urgency.
+2. **Make labor visible.** Every persona needs the system to *show* contribution — Maya so the load is provably distributed, Daniel so his remote work isn't invisible, Patricia so she's recognized as crew. This is a first-class design constraint, not a "delight" feature.
+3. **Permission, not pressure.** The product should never make someone feel guilty for declining. Maya is already drowning in obligation; Daniel is already drowning in guilt; Patricia is already worried about overstepping. Decline UX matters as much as Accept UX.
+
 ## 3. Strategic Fit
 
 **Why this, why now:**
