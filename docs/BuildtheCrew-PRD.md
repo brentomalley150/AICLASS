@@ -8,7 +8,14 @@
 
 ## 1. Hypothesis
 
-We believe that giving distributed family + friend "crews" an AI-powered coordination app for aging-in-place loved ones will increase the number of older adults who successfully remain in their homes (vs. moving to assisted living) by reducing coordinator burnout and missed care tasks, measured by `[NEED: target metric — e.g., % of crews still active at 6 months, or self-reported caregiver burnout score]`.
+We believe that giving distributed family + friend "crews" an AI-powered coordination app for aging-in-place loved ones will increase the number of older adults who successfully remain in their homes (vs. moving to assisted living) by reducing coordinator burnout and missed care tasks, measured by **% of loved ones still aging-in-place at 12 months post-crew-formation** (target: lift over the `[NEED: industry baseline]` cited in Section 6).
+
+Because a 12-month outcome is too slow to steer the product, we validate progress against two leading indicators at 6 months:
+
+- **Crew durability:** ≥ `[NEED: target — recommended 60%]` of crews still active 6 months after signup. Tied to Defensibility pillar 1 (multi-party coordination graph forming).
+- **Lead-caregiver burnout reduction:** ≥ 25% drop in self-reported burnout score (validated instrument, e.g., Zarit Burden Interview short form) versus the crew founder's intake baseline. Tied directly to the second mechanism in the hypothesis above.
+
+If both leading indicators move and the 12-month outcome does not, the hypothesis is refuted and the product is solving the wrong problem.
 
 ## 2. Problem
 
