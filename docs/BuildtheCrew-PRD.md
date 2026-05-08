@@ -171,7 +171,17 @@ Three principles fall out of the personas above:
 
 ## 4. Solution
 
-A mobile-first app where a crew of family + friends collaboratively cares for a loved one aging in place. AI does three core jobs:
+A mobile-first app where a crew of family + friends collaboratively cares for a loved one aging in place. AI does three core jobs.
+
+### Why agentic, not rule-based
+
+Caregiving coordination is fundamentally a judgment problem, not a rules problem. Almost every decision the system has to make weighs inputs that don't have crisp values — *who is the right person for this task* depends on availability, geography, skill, recent load, the family dynamic, and what happened last week. A rule engine would force us to enumerate all of that in advance, which is impossible: edge cases only surface in production, and they evolve as the loved one's needs change. The three core capabilities below are each clear examples of this. The Scheduler has to weigh seven dimensions and rebalance when someone cancels at 3pm. The Summarizer has to pull a single sentence about a fall to the top of a feed it has never seen before. The Services assistant has to remember preferences and ask follow-up questions like *"same provider as last time?"*. None of these are rule-shaped problems.
+
+The honest counter-argument is that agentic systems hallucinate, are harder to debug, and create accountability problems in a sensitive domain like elder care. That is exactly why this PRD draws the line where it does: **the judgment lives in the agent (assignment, summarization, recommendation), but the safety-critical guardrails are deterministic rules** — never book over the approval threshold, never authorize home access, never make a medical decision, escalate distress signals to humans within 60 seconds. The agent is permitted to be wrong on the soft cases. It is not permitted to be wrong on the hard ones.
+
+The strategic argument is that this is the first moment an agentic approach is actually viable for this product category. The existing tools — Lotsa Helping Hands, Carely, ianacare — aren't bad products; they are products built before the technology was ready. They settled for shared calendars and chat threads because LLMs couldn't reliably summarize 200 messages or judge vendor fit against context. Building rule-based today would mean building a competitor of those products, not a successor to them.
+
+What this means for the rest of this section: the behavior spec below is not a list of programmed responses. It is the agent's *policy surface* — illustrative examples of how it should reason, not exhaustive coverage of inputs. The Rejection / safety criteria, by contrast, are hard rules the agent must never override.
 
 ### Core Capabilities
 
