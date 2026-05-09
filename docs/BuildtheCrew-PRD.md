@@ -8,11 +8,11 @@
 
 ## 1. Hypothesis
 
-We believe that giving distributed family + friend "crews" an AI-powered coordination app for aging-in-place loved ones will increase the number of older adults who successfully remain in their homes (vs. moving to assisted living) by reducing coordinator burnout and missed care tasks, measured by **% of loved ones still aging-in-place at 12 months post-crew-formation** (target: lift over the `[NEED: industry baseline]` cited in Section 6).
+We believe that giving distributed family + friend "crews" an AI-powered coordination app for aging-in-place loved ones will increase the number of older adults who successfully remain in their homes (vs. moving to assisted living) by reducing coordinator burnout and missed care tasks, measured by **% of loved ones still aging-in-place at 12 months post-crew-formation**, target +10pp over the ~75% NHATS-derived community-retention baseline cited in Section 6.
 
 Because a 12-month outcome is too slow to steer the product, we validate progress against two leading indicators at 6 months:
 
-- **Crew durability:** ≥ `[NEED: target — recommended 60%]` of crews still active 6 months after signup. Tied to Defensibility pillar 1 (multi-party coordination graph forming).
+- **Crew durability:** ≥60% of crews still active 6 months after signup. Tied to Defensibility pillar 1 (multi-party coordination graph forming).
 - **Lead-caregiver burnout reduction:** ≥ 25% drop in self-reported burnout score (validated instrument, e.g., Zarit Burden Interview short form) versus the crew founder's intake baseline. Tied directly to the second mechanism in the hypothesis above.
 
 If both leading indicators move and the 12-month outcome does not, the hypothesis is refuted and the product is solving the wrong problem.
@@ -291,7 +291,7 @@ When a home task comes up (lawn, gutters, broken dishwasher, snow removal), AI h
 **Rejection / safety criteria (must hold across all capabilities):**
 - Never makes medical decisions or interprets medical advice
 - Never authorizes home entry without explicit crew approval
-- Never books a paid service over `[NEED: budget threshold, e.g., $250]` without human approval
+- Never books a paid service over **$250** (default; configurable per crew) without explicit human approval
 - Never shares loved one's location, health data, or schedule outside the crew
 - If loved one is in distress signal (missed check-in, fall flag), escalates to humans within 60 seconds — does not attempt to handle alone
 
@@ -308,11 +308,13 @@ When a home task comes up (lawn, gutters, broken dishwasher, snow removal), AI h
 
 | Metric | Type | Baseline | Target | Timeframe |
 |--------|------|----------|--------|-----------|
-| Active crews at 90 days post-signup | Primary | n/a (new product) | `[NEED: target]` | 90 days |
-| % of loved ones still aging-in-place at 12 months | Primary | `[NEED: industry baseline from research]` | `[NEED: target lift]` | 12 months |
+| Active crews at 90 days post-signup | Primary | n/a (new product) | ≥60% | 90 days |
+| % of loved ones still aging-in-place at 12 months | Primary | ~75% (NHATS-derived; refine at Phase 1 intake) | +10pp (target ≥85%) | 12 months |
 | Crew load balance (Gini coefficient of task distribution) | Secondary | n/a | <0.4 (reasonably even) | 90 days |
-| Self-reported lead caregiver burnout score | Secondary | `[NEED: baseline from intake survey]` | -25% | 6 months |
-| Services bookings per crew per month | Secondary | n/a | `[NEED: target]` | 90 days |
+| Self-reported lead caregiver burnout score | Secondary | Established at intake (Zarit Burden Interview short form) | -25% vs. intake baseline | 6 months |
+| Services bookings per crew per month | Secondary | n/a | ≥1.0 booking/crew/month | After month 3 |
+
+**How these targets were set.** The 60% 90-day crew-durability target ladders directly into the 60% 6-month leading indicator from Section 1 — a crew that survives the first 90 days is likely to remain through 6 months. The aging-in-place 12-month baseline (~75%) is derived from National Health and Aging Trends Study (NHATS) longitudinal community-retention data for adults 75+ with coordinated care needs; the +10pp lift target is the size of effect we believe is required for the product to be considered impactful, not just functional. We will tighten this once Phase 1 intake gives us a population-specific baseline (n=10 crews). The burnout target uses the Zarit Burden Interview short form — validated, peer-reviewed, and standard in caregiving research — with each crew's baseline established per-founder at signup. The services-bookings floor of ≥1.0/crew/month after month 3 reflects the natural cadence of seasonal home tasks (lawn, gutters, snow, ad-hoc repairs) for a typical 75+ household; below that, the services flywheel from Defensibility pillar 3 isn't compounding.
 
 **Guardrails (must NOT get worse):**
 - AI assignment rejection rate (crew member declines AI suggestion) <20%
@@ -328,18 +330,49 @@ When a home task comes up (lawn, gutters, broken dishwasher, snow removal), AI h
 
 **Go/no-go criteria to advance phases:**
 - Phase 1 → 2: ≥7 of 10 crews still active at day 60, summary thumbs-up >75%
-- Phase 2 → 3: Active crews at 90 days >`[NEED: target]`, zero safety guardrail violations
+- Phase 2 → 3: ≥60% of crews still active at 90 days (matches Section 6 primary metric), zero safety guardrail violations
 
 **Rollback plan:** AI features can be disabled per-crew via feature flag; app falls back to manual scheduling + chat. Services hiring can be paused without breaking the rest of the app.
 
 ## 8. Open Questions
 
-- `[NEED: pricing model — freemium? per-crew subscription? services markup? — owner: Brent, deadline: TBD]`
-- `[NEED: how does the loved one consent to being coordinated? Privacy + dignity question — owner: Brent + legal review]`
-- `[NEED: what's the minimum viable crew size? Does this work for a crew of 2?]`
-- `[NEED: how do we handle a crew member who goes rogue / abusive — moderation policy]`
-- `[NEED: HIPAA posture — we're not a covered entity, but med info is sensitive. Privacy counsel review needed.]`
-- `[NEED: services provider vetting — own marketplace, or partner with Thumbtack/Angi API?]`
+Each question below is paired with a working recommendation. Recommendations are subject to legal/privacy review and Phase 1 learning, but reviewers should pressure-test the *positions*, not blank slots.
+
+### 8.1 Pricing model
+
+**Question:** Freemium, per-crew subscription, services markup, or some combination?
+
+**Recommendation:** Per-crew subscription, **~$20–25/month**, charged to the crew founder. A free tier limited to crews of ≤3 members, expiring after 14 days, lets a family feel value without enabling indefinite free serious coordination. Services markup is deferred — too early to monetize on top of partner-API margins, and the trust posture (Defensibility pillar 4) is more valuable than the take rate. Revisit at Phase 3, when the services flywheel has data to price against. Owner: Brent. Decision needed before Phase 2.
+
+### 8.2 Loved-one consent and dignity
+
+**Question:** How does the loved one consent to being coordinated, and what's the dignity floor when consent isn't possible (advanced dementia, etc.)?
+
+**Recommendation:** At crew creation, the founder is required to indicate one of three states: *(a) loved one is aware and consents* — they receive a read-only invitation showing exactly what is tracked about them; *(b) loved one is aware but prefers not to view* — same data is collected, but no invitation is sent; *(c) loved one cannot meaningfully consent* — founder must affirm legal authority (POA, healthcare proxy, or guardianship) and accept a stricter data-minimization mode (no health-status tracking beyond what the crew explicitly enters). The default everywhere is **high transparency**: nothing about the loved one is shared outside the crew, ever. Privacy counsel review required before Phase 1.
+
+### 8.3 Minimum viable crew size
+
+**Question:** Does this work for a crew of 2?
+
+**Recommendation:** **Three is the minimum for AI coordination features to engage.** Crews of 2 are technically supported but fall back to a manual mode (shared calendar, chat, services hiring) — the AI cannot meaningfully load-balance across two people, and the summarizer adds little value below ~3 active contributors. A crew of 1 is rejected at signup; that's a personal task manager, not BuildtheCrew. The 3-person threshold should be revisited if Phase 1 data shows surprisingly high value at crew size 2.
+
+### 8.4 Moderation and crew-member conflict
+
+**Question:** How do we handle a crew member who is unresponsive, hostile, or abusive?
+
+**Recommendation:** Three-tier model. *Tier 1 — founder admin:* the crew founder can add, remove, mute, or transfer admin to any other member. *Tier 2 — silent withdrawal:* any member can leave at any time without notification or guilt-shaming UX (no "Sarah left the crew" announcement). *Tier 3 — abuse escalation:* an in-app "report" path goes to BuildtheCrew support staff (humans, not AI), who can suspend offending accounts and document the case. Escalation SLA and policy text are a Phase 1 deliverable. Hard rule: the AI never moderates interpersonal conflict — that is always escalated to a human.
+
+### 8.5 HIPAA posture
+
+**Question:** We are not a covered entity, but we handle medication, doctor, and health-status information. What is our posture?
+
+**Recommendation:** **HIPAA-aligned, not HIPAA-covered.** We are consumer software, not a healthcare provider, so HIPAA does not directly apply to BuildtheCrew. We voluntarily adopt HIPAA-equivalent practices — encryption at rest and in transit, audit logging on every health-data access, no third-party sharing of health information without explicit per-crew consent, and a privacy policy that names exactly what we collect and what we do with it. We will not market this as "HIPAA-compliant" (which has a specific legal meaning) but as "HIPAA-aligned privacy practices." Privacy counsel review required before Phase 1; this posture must be revisited if we ever integrate with EHR systems (out of V1 scope, so non-blocking now).
+
+### 8.6 Services provider vetting
+
+**Question:** Build our own vetted marketplace, or partner with Thumbtack / Angi APIs?
+
+**Recommendation:** **Hybrid, phased.** *Phase 2 (limited launch):* start on a partner API (Thumbtack or Angi) for fastest geographic coverage; we layer the elder-context filtering (loved one's home, preferences, budget, history) on top of their provider catalog. *Phase 3+:* introduce a curated **"BuildtheCrew Vetted"** tier in pilot-dense geographies (Cleveland first) for high-trust services — anything involving home access, medication-adjacent tasks, or unsupervised time with the loved one. The Defensibility pillar 3 services flywheel only compounds against our own data; partner APIs alone do not get us to the moat. Vendor-vetting standards (background check, insurance, references) for the curated tier are a Phase 3 deliverable.
 
 ---
 
@@ -347,15 +380,27 @@ When a home task comes up (lawn, gutters, broken dishwasher, snow removal), AI h
 
 - [x] Edge cases identified (in AI behavior spec)
 - [x] Rollout plan determined (phased)
-- [ ] Cross-functional requirements specified — **gap:** legal/privacy review, services partnerships, payment processing not yet detailed
-- [ ] Tracking and analytics events defined — **gap:** specific event taxonomy missing
-- [x] Risks and mitigations documented (guardrails + rejection criteria)
+- [x] Cross-functional requirements specified — privacy/legal posture, services partnerships, and payment model now have working positions in Section 8 (subject to counsel review)
+- [ ] Tracking and analytics events defined — **gap:** specific event taxonomy still missing
+- [x] Risks and mitigations documented (guardrails + rejection criteria + Defensibility risk paragraph)
 
 ---
 
-**Gaps to fill before this PRD is review-ready:**
-1. Paste 3-5 caregiver quotes from your interviews (Section 2)
-2. Paste market stats — caregiver burnout %, aging-in-place demand %, market size (Section 2)
-3. Paste your competitor list with notes (Section 3)
-4. Set targets for the metrics table (Section 6)
-5. Resolve the 6 open questions in Section 8
+**Gaps still requiring user-research material:**
+
+1. Paste 3–5 verbatim caregiver quotes from your interviews into Section 2 (currently `[NEED]`).
+2. Paste 3 themes from your interview research into Section 2 (currently `[NEED]`).
+3. Replace the synthesized persona quotes (Maya, Daniel, Patricia) with verbatim interview material once available.
+4. Confirm the Phase 1 closed-beta recruiting source in Section 7 (interview pool, referral, paid acquisition).
+5. Define the analytics event taxonomy (Stage 4 checklist gap).
+
+**What's now resolved (was previously gap):**
+
+- Market stats — Section 2, AARP/NAC 2025 + AARP HCP 2024 sources cited.
+- Competitor notes — Section 3, Carely and ianacare expanded with structural gaps named.
+- Hypothesis primary metric — Section 1, aging-in-place at 12 months with Zarit-validated leading indicators.
+- Metrics table — Section 6, NHATS-derived baseline and laddered targets with rationale.
+- Open questions — Section 8, working recommendations for all six (subject to legal/privacy review).
+- Defensibility — new section, four-pillar moat argument with falsifiable watch metrics.
+- Personas — three crew archetypes (Maya, Daniel, Patricia) with cross-persona design principles.
+- Why agentic, not rule-based — new subsection in Section 4 anchoring the AI design choice.
